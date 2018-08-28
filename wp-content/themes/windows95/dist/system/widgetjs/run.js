@@ -5,6 +5,7 @@
 // loaded dynamically
 function aliasRun(rawCommand) {
 	var themeUri = $('[data-theme-uri]').attr('data-theme-uri');
+	
 	var command = rawCommand.toLowerCase(); // for case insensitivity
 	if(command == "debug") {
 		var debugJsLink = $("<script src='"+themeUri+"system/debug/debug.js'>");

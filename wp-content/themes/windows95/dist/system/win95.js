@@ -18,11 +18,14 @@ var defaultImage = "icons/default16.png"; // default taskbar and titlebar icon (
 // AUTORUN FUNCTION (Classes and Start Menu)
 $(document).ready(function()
 {
+
+  var themeUri = $('[data-theme-uri]').attr('data-theme-uri');
+
   /* Environment Setup Functions */
   console.log("Window Creation Syntax: makeWindow('Icon URL', 'Window Title', 'iFrame URL', Taskbar Boolean, Resize Boolean, Width, Height);");
   if (returnBrowserEngine() == "webkit")
   { // add webkit/blink only functions here
-    $('head').append('<link rel="stylesheet" type="text/css" href="system/webkit.css">');
+    $('head').append('<link rel="stylesheet" type="text/css" href="'+themeUri+'system/webkit.css">');
   }
   // #win-container setup - height
   var winHeight = $(window).height();
@@ -54,10 +57,10 @@ $(document).ready(function()
   // MINIMIZE BUTTON
   $("#win_container").on('mousedown', '.win_titb_min', function()
   {
-    $(this).attr("src", $('[data-theme-uri]').attr('data-theme-uri') + "system/win_controls/min_dep.png");
+    $(this).attr("src", $('[data-theme-uri]').attr('data-theme-uri') + themeUri + "system/win_controls/min_dep.png");
     $(this).mouseup(function()
     {
-      $(this).attr("src", $('[data-theme-uri]').attr('data-theme-uri') + "system/win_controls/min.png");
+      $(this).attr("src", $('[data-theme-uri]').attr('data-theme-uri') + themeUri + "system/win_controls/min.png");
       var windc_id = $(this).parent().attr("id");
       var windc_id_splt = windc_id.split("_");
       var win_id = windc_id_splt[2];
@@ -70,10 +73,10 @@ $(document).ready(function()
   // MAXIMIZE BUTTON
   $("#win_container").on('mousedown', '.win_titb_max', function()
   {
-    $(this).attr("src", $('[data-theme-uri]').attr('data-theme-uri') + "system/win_controls/max_dep.png");
+    $(this).attr("src", $('[data-theme-uri]').attr('data-theme-uri') + themeUri + "system/win_controls/max_dep.png");
     $(this).mouseup(function()
     {
-      $(this).attr("src", $('[data-theme-uri]').attr('data-theme-uri') + "system/win_controls/max.png");
+      $(this).attr("src", $('[data-theme-uri]').attr('data-theme-uri') + themeUri + "system/win_controls/max.png");
       var windc_id = $(this).parent().attr("id");
       var windc_id_splt = windc_id.split("_");
       var win_id = windc_id_splt[2];
@@ -85,10 +88,10 @@ $(document).ready(function()
   // CLOSE BUTTON
   $("#win_container").on('mousedown', '.win_titb_close', function()
   {
-    $(this).attr("src", $('[data-theme-uri]').attr('data-theme-uri') + "system/win_controls/close_dep.png");
+    $(this).attr("src", $('[data-theme-uri]').attr('data-theme-uri') + themeUri + "system/win_controls/close_dep.png");
     $(this).mouseup(function()
     {
-      $(this).attr("src", $('[data-theme-uri]').attr('data-theme-uri') + "system/win_controls/close.png");
+      $(this).attr("src", $('[data-theme-uri]').attr('data-theme-uri') + themeUri + "system/win_controls/close.png");
       var windc_id = $(this).parent().attr("id");
       //alert(windc_id);
       var windc_id_splt = windc_id.split("_");
@@ -375,7 +378,7 @@ function addTaskbar(win_id, icon, title)
   else
   {
     // icon not present
-    var placeholder = "system/images/placeholder.png";
+    var placeholder = themeUri + "system/images/placeholder.png";
     var sec1 = '<div class="win_tb_button" id="win_tb_win_';
     var sec2 = '"><div class="win_tb_icon_noicon"><img src="';
     var sec3 = '"></div><div class="win_tb_text_noicon">';

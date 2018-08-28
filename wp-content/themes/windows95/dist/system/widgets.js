@@ -29,6 +29,8 @@ $(document).ready(function () {
 function makeWidget(icon, title, html, taskbar, min, ques, center, wid, hei, cusClass) { /* IT WORKS!!! What's the catch? */
 	console.log("Widget created");
 
+	var themeUri = $('[data-theme-uri]').attr('data-theme-uri');
+
 	window_set++;
 	// Add titlebar height to window height
 	var winHeight = hei + titbHeight;
@@ -51,12 +53,12 @@ function makeWidget(icon, title, html, taskbar, min, ques, center, wid, hei, cus
 	// determine Window control type
 	if (min == true) {
 		// minimize shown
-		var sec7 = '"><img src="system/win_controls/min.png" class="win_titb_min" id"_"><img src="system/win_controls/max_disabled.png" class="win_titb_max_dis" id"_"><img src="system/win_controls/close.png" class="win_titb_close" id"_"></div></div>';
+		var sec7 = '"><img src="'+themeUri+'system/win_controls/min.png" class="win_titb_min" id"_"><img src="'+themeUri+'system/win_controls/max_disabled.png" class="win_titb_max_dis" id"_"><img src="'+themeUri+'system/win_controls/close.png" class="win_titb_close" id"_"></div></div>';
 	} else {
 		if (ques != true) { // No Question Mark
-			var sec7 = '"><img src="system/win_controls/close.png" class="win_titb_close" id"_"></div></div>';
+			var sec7 = '"><img src="'+themeUri+'system/win_controls/close.png" class="win_titb_close" id"_"></div></div>';
 		} else { // Question Mark Present
-			var sec7 = '"><img src="system/win_controls/question.png" class="win_titb_question" id"_"><img src="system/win_controls/close.png" class="win_titb_close" id"_"></div></div>';
+			var sec7 = '"><img src="'+themeUri+'system/win_controls/question.png" class="win_titb_question" id"_"><img src="'+themeUri+'system/win_controls/close.png" class="win_titb_close" id"_"></div></div>';
 		}
 	}
 	// merge strings into one variable for insertion into DOM
@@ -93,11 +95,13 @@ function makeWidget(icon, title, html, taskbar, min, ques, center, wid, hei, cus
 function runHome() { // the run box
 	// toggle Start menu if launched from there
 	// add in the run.js include into <head>
-	var runJsLink = $("<script src='system/widgetjs/run.js'>");
+	var themeUri = $('[data-theme-uri]').attr('data-theme-uri');
+
+	var runJsLink = $("<script src='"+themeUri+"system/widgetjs/run.js'>");
 	$("head").append(runJsLink);
 	//html code below
 	// Images
-	var sec1 = '<div class="win_wid_run_tgt"></div><div id="win_wid_run_container"> <div id="win_wid_run_icondiv"> <img src="system/icons/find32.png"> ';
+	var sec1 = '<div class="win_wid_run_tgt"></div><div id="win_wid_run_container"> <div id="win_wid_run_icondiv"> <img src="'+themeUri+'system/icons/find32.png"> ';
 	// Text Line 1
 	var sec2 = '</div> <p id="win_wid_run_text"> Type the name of a program, folder, or document, and<br> ';
 	// Text Line 2
@@ -125,6 +129,9 @@ function runHome() { // the run box
 
 function run(start) { // the run box
 	// toggle Start menu if launched from there
+
+	var themeUri = $('[data-theme-uri]').attr('data-theme-uri');
+
 	if (start == true) {
 		$("#win_start").toggle(0, function () {
 			$(".win_titlebar").toggleClass("win_titb_start");
@@ -133,11 +140,11 @@ function run(start) { // the run box
 		});
 	}
 	// add in the run.js include into <head>
-	var runJsLink = $("<script src='system/widgetjs/run.js'>");
+	var runJsLink = $("<script src="+themeUri+"'system/widgetjs/run.js'>");
 	$("head").append(runJsLink);
 	//html code below
 	// Images
-	var sec1 = '<div class="win_wid_run_tgt"></div><div id="win_wid_run_container"> <div id="win_wid_run_icondiv"> <img src="system/icons/find32.png"> ';
+	var sec1 = '<div class="win_wid_run_tgt"></div><div id="win_wid_run_container"> <div id="win_wid_run_icondiv"> <img src="'+themeUri+'system/icons/find32.png"> ';
 	// Text Line 1
 	var sec2 = '</div> <p id="win_wid_run_text"> Type the name of a program, folder, or document, and<br> ';
 	// Text Line 2
@@ -209,9 +216,12 @@ function runClose() {
 }
 /* WINVER DIALOG FUNCTION */
 function winverStart() {
+
+	var themeUri = $('[data-theme-uri]').attr('data-theme-uri');
+
 	var html1 = '<div class="win_wid_winver_tgt"></div><div id="win_wid_winver_container">';
 	var html2 = '<span id="win_wid_winver_name" class="win_wid_winver_text">Windows 95</span>';
-	var html3 = '<img id="win_wid_winver_icon" src="system/images/winver_logo.png">';
+	var html3 = '<img id="win_wid_winver_icon" src="'+themeUri+'system/images/winver_logo.png">';
 	var html4 = '<span id="win_wid_winver_copy" class="win_wid_winver_text">Copyright &copy; 1981-1995, Microsoft Corp.</span>';
 	var html5 = '<button id="win_wid_winver_ok" onclick="closeWinver()">OK</button></div>';
 	var winverHTML = html1 + html2 + html3 + html4 + html5;
