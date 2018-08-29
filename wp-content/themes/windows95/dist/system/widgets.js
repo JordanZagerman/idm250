@@ -180,7 +180,7 @@ function aliasRun(rawCommand) {
 
 	var command = rawCommand.toLowerCase(); // for case insensitivity
 	if(command == "debug") {
-		var debugJsLink = $("<script src='"+themeUri+"system/debug/debug.js'>");
+		var debugJsLink = $("<script src="+themeUri+"'system/debug/debug.js'>");
 		$("head").append(debugJsLink);
 		winDebug();
 	} else if (command == "winver") {
@@ -188,7 +188,7 @@ function aliasRun(rawCommand) {
 	} else {
 
 		// put file not found error dialog js here
-		makeWindow(themeUri + 'system/icons/find24.png', 'Find', themeUri + 'pages/search_results_page.html', true);
+		makeWindow(themeUri + 'system/icons/find24.png', 'Find',themeUri + 'pages/search_results_page.html', true);
 	}
 }
 
@@ -240,8 +240,11 @@ function closeWinver() {
 // ERROR MESSAGE FUNCTION
 function windowsError(icon, title, msg) {
 	console.log("Error Window Created")
+
+	var themeUri = $('[data-theme-uri]').attr('data-theme-uri');
+
 	if (icon == 1) {
-		var iconURL = "system/icons/dialogs/error.png";
+		var iconURL = themeUri + "system/icons/dialogs/error.png";
 	}
 	var sec1 = '<div class="win_wid_error_tgt"></div><div class="win_wid_error_container">';
 	var sec2 = '<div class="win_wid_error_concont"><div class="win_wid_error_icondiv"><img src="';

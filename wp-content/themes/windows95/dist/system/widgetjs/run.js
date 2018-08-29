@@ -5,7 +5,8 @@
 // loaded dynamically
 function aliasRun(rawCommand) {
 	var themeUri = $('[data-theme-uri]').attr('data-theme-uri');
-	
+	var pagesUri = $('[data-pages-uri]').attr('data-pages-uri');
+
 	var command = rawCommand.toLowerCase(); // for case insensitivity
 	if(command == "debug") {
 		var debugJsLink = $("<script src='"+themeUri+"system/debug/debug.js'>");
@@ -14,8 +15,10 @@ function aliasRun(rawCommand) {
 	} else if (command == "winver") {
 		winverStart();
 	} else {
+		console.log("else aliasRun");
+		console.log(pagesUri);
 
 		// put file not found error dialog js here
-		makeWindow(themeUri + 'system/icons/find24.png', 'Find', themeUri + 'pages/search_results_page.html', true);
+		makeWindow(themeUri + 'system/icons/find24.png', 'Find', pagesUri + "pages/search_results_page.html", true);
 	}
 }
