@@ -1,6 +1,4 @@
-<?php
-get_header('pages');
-?>
+<?php get_header('pages'); ?>
 
 <?php if (have_posts()): ?>
 

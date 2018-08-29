@@ -131,29 +131,56 @@
             <div class='homescreen_icons' onclick="makeWindow('<?php echo get_stylesheet_directory_uri(); ?>/dist/system/icons/folder.png', '<?php the_title();?>', '<?php the_permalink(); ?>', true);">
                 <img class="homescreen_icons_images" src="<?php echo get_stylesheet_directory_uri(); ?>/dist/system/icons/folder.png"
                     id="win_start_icon" alt="Portfolio">
-                <p class="homescreen_title_text"> <?php the_title();?></p>
+                <p class="homescreen_title_text">
+                    <?php the_title();?>
+                </p>
             </div>
 
             <?php wp_reset_postdata(); // IMPORTANT - reset the $post object so the rest of the page works correctly ?>
             <?php endif; ?>
 
+            <?php
+            $post_object = get_field('archive_section');
+            if( $post_object ): 
+                $post = $post_object;
+                setup_postdata( $post ); 
+                ?>
 
-
-            <div class='homescreen_icons' onclick="makeWindow('<?php echo get_stylesheet_directory_uri(); ?>/dist/system/icons/recycle_bin_full.png', 'Recycle Bin', '<?php echo get_stylesheet_directory_uri(); ?>/pages/archive_page.html', true);">
+            <div class='homescreen_icons' onclick="makeWindow('<?php echo get_stylesheet_directory_uri(); ?>/dist/system/icons/recycle_bin_full.png', '<?php the_title();?>', '<?php the_permalink(); ?>', true);">
                 <img class="homescreen_icons_images" src="<?php echo get_stylesheet_directory_uri(); ?>/dist/system/icons/recycle_bin_full.png"
                     id="win_start_icon" alt="Archives">
-                <p class="homescreen_title_text">Recycle Bin</p>
+                <p class="homescreen_title_text">
+                    <?php the_title();?>
+                </p>
             </div>
+
+            <?php wp_reset_postdata(); // IMPORTANT - reset the $post object so the rest of the page works correctly ?>
+            <?php endif; ?>
+
+            <!-- Find -->
+
             <div class='homescreen_icons' onClick="runHome()">
                 <img class="homescreen_icons_images" src="<?php echo get_stylesheet_directory_uri(); ?>/dist/system/icons/find32.png"
                     id="win_start_icon" alt="Find">
                 <p class="homescreen_title_text">Find</p>
             </div>
-            <div class='homescreen_icons' onclick="makeWindow('<?php echo get_stylesheet_directory_uri(); ?>/dist/system/icons/contact_icon.png', 'Contact', '<?php echo get_stylesheet_directory_uri(); ?>/pages/contact_page.html', true);">
+
+            <?php
+            $post_object = get_field('contact_section');
+            if( $post_object ): 
+                $post = $post_object;
+                setup_postdata( $post ); 
+                ?>
+
+            <div class='homescreen_icons' onclick="makeWindow('<?php echo get_stylesheet_directory_uri(); ?>/dist/system/icons/contact_icon.png', '<?php the_title();?>', '<?php the_permalink(); ?>', true);">
                 <img class="homescreen_icons_images" src="<?php echo get_stylesheet_directory_uri(); ?>/dist/system/icons/contact_icon.png"
                     id="win_start_icon" alt="Contact">
-                <p class="homescreen_title_text">Contact</p>
+                <p class="homescreen_title_text"><?php the_title();?></p>
             </div>
+
+            <?php wp_reset_postdata(); // IMPORTANT - reset the $post object so the rest of the page works correctly ?>
+            <?php endif; ?>
+
             <div class='homescreen_icons'>
                 <a class="home_link" href="<?php echo get_stylesheet_directory_uri(); ?>/dist/system/download/resume.pdf"
                     download>
