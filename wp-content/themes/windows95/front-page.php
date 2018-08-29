@@ -104,32 +104,41 @@
             <!-- function makeWindow(icon, title, frameurl, taskbar, res, wid, hei) -->
 
             <?php
-
             $post_object = get_field('about_section');
-
             if( $post_object ): 
-
-                // override $post
                 $post = $post_object;
                 setup_postdata( $post ); 
-
                 ?>
 
             <div class='homescreen_icons' onclick="makeWindow('<?php echo get_stylesheet_directory_uri(); ?>/dist/system/icons/document_file.png','<?php the_title();?>', '<?php the_permalink(); ?>', true);">
                 <img class="homescreen_icons_images" src="<?php echo get_stylesheet_directory_uri(); ?>/dist/system/icons/README.png"
                     id="win_start_icon" alt="About">
-                <p class="homescreen_title_text"><?php the_title();?></p>
+                <p class="homescreen_title_text">
+                    <?php the_title();?>
+                </p>
             </div>
-            
+
+            <?php wp_reset_postdata(); // IMPORTANT - reset the $post object so the rest of the page works correctly ?>
+            <?php endif; ?>
+
+            <?php
+            $post_object = get_field('portfolio_section');
+            if( $post_object ): 
+                $post = $post_object;
+                setup_postdata( $post ); 
+                ?>
+
+            <div class='homescreen_icons' onclick="makeWindow('<?php echo get_stylesheet_directory_uri(); ?>/dist/system/icons/folder.png', '<?php the_title();?>', '<?php the_permalink(); ?>', true);">
+                <img class="homescreen_icons_images" src="<?php echo get_stylesheet_directory_uri(); ?>/dist/system/icons/folder.png"
+                    id="win_start_icon" alt="Portfolio">
+                <p class="homescreen_title_text"> <?php the_title();?></p>
+            </div>
+
             <?php wp_reset_postdata(); // IMPORTANT - reset the $post object so the rest of the page works correctly ?>
             <?php endif; ?>
 
 
-            <div class='homescreen_icons' onclick="makeWindow('<?php echo get_stylesheet_directory_uri(); ?>/dist/system/icons/folder.png', 'Portfolio', '<?php echo get_stylesheet_directory_uri(); ?>/pages/portfolio_index.html', true);">
-                <img class="homescreen_icons_images" src="<?php echo get_stylesheet_directory_uri(); ?>/dist/system/icons/folder.png"
-                    id="win_start_icon" alt="Portfolio">
-                <p class="homescreen_title_text">Portfolio</p>
-            </div>
+
             <div class='homescreen_icons' onclick="makeWindow('<?php echo get_stylesheet_directory_uri(); ?>/dist/system/icons/recycle_bin_full.png', 'Recycle Bin', '<?php echo get_stylesheet_directory_uri(); ?>/pages/archive_page.html', true);">
                 <img class="homescreen_icons_images" src="<?php echo get_stylesheet_directory_uri(); ?>/dist/system/icons/recycle_bin_full.png"
                     id="win_start_icon" alt="Archives">
@@ -158,4 +167,4 @@
     <div id="win_overlay">
 
     </div>
-<?php get_footer();?>
+    <?php get_footer();?>
