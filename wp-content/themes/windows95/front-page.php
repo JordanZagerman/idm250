@@ -175,20 +175,38 @@
             <div class='homescreen_icons' onclick="makeWindow('<?php echo get_stylesheet_directory_uri(); ?>/dist/system/icons/contact_icon.png', '<?php the_title();?>', '<?php the_permalink(); ?>', true);">
                 <img class="homescreen_icons_images" src="<?php echo get_stylesheet_directory_uri(); ?>/dist/system/icons/contact_icon.png"
                     id="win_start_icon" alt="Contact">
-                <p class="homescreen_title_text"><?php the_title();?></p>
+                <p class="homescreen_title_text">
+                    <?php the_title();?>
+                </p>
             </div>
 
             <?php wp_reset_postdata(); // IMPORTANT - reset the $post object so the rest of the page works correctly ?>
             <?php endif; ?>
 
+
+
+            <!-- Resume -->
+
+                            <?php $file = get_field('resume_section');
+                if( $file ): ?>
+
             <div class='homescreen_icons'>
-                <a class="home_link" href="<?php echo get_stylesheet_directory_uri(); ?>/dist/system/download/resume.pdf"
-                    download>
+
+
+
+
+
+                <a class="home_link" href="<?php echo $file['url']; ?>" download>
+        
                     <img class="homescreen_icons_images" src="<?php echo get_stylesheet_directory_uri(); ?>/dist/system/icons/resume.png"
                         id="win_start_icon" alt="Resume">
                 </a>
                 <p class="homescreen_title_text">Resume</p>
             </div>
+
+
+                <?php endif; ?>
+
         </div>
     </div>
     <div id="win_overlay">

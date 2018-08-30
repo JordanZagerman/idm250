@@ -26,8 +26,6 @@ get_header('pages');
              
              <?php  } 
                 the_content();
-            
-
               ?> <!-- Page Content (WYSIWYG Field) -->
             <?php endwhile; //resetting the page loop?>
             <?php wp_reset_query(); //resetting the page query?>
