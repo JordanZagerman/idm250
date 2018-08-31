@@ -46,15 +46,23 @@
             <div id="win_start_tli_programs" class="win_start_toplevel_item">
                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/dist/system/icons/programs24.png" alt="Programs"
                     class="win_start_tliicon">
-                <span class="win_start_tlitext">
-                    <u>P</u>rograms</span>
+                <?php if (get_field('start_menu_block_1_first_letter') && get_field('start_menu_block_1_following_letters')) { ?>
+                <span class="win_start_tlitext"><u><?php the_field('start_menu_block_1_first_letter')?></u><?php the_field('start_menu_block_1_following_letters')?></span>
+                <?php  } else { ?>
+                <span class="win_start_tlitext"><u>P</u>rograms</span>
+                <?php }?>
             </div>
             <!-- Documents -->
             <div id="win_start_tli_documents" class="win_start_toplevel_item">
                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/dist/system/icons/documents24.png" alt="Documents"
                     class="win_start_tliicon">
-                <span class="win_start_tlitext">
-                    <u>D</u>ocuments</span>
+                <?php if (get_field('start_menu_block_2_first_letter') && get_field('start_menu_block_2_following_letters')) { ?>
+                <span class="win_start_tlitext"><u>
+                        <?php the_field('start_menu_block_2_first_letter')?></u>
+                    <?php the_field('start_menu_block_2_following_letters')?></span>
+                <?php  } else { ?>
+                <span class="win_start_tlitext"><u>D</u>ocuments</span>
+                <?php }?>
             </div>
             <!-- Settings -->
             <div id="win_start_tli_settings" class="win_start_toplevel_item">
@@ -114,7 +122,14 @@
                 <img class="homescreen_icons_images" src="<?php echo get_stylesheet_directory_uri(); ?>/dist/system/icons/README.png"
                     id="win_start_icon" alt="About">
                 <p class="homescreen_title_text">
-                    <?php the_title();?>
+                    <?php if ( get_field('icon_lable_and_bar_heading') ) { ?>
+
+                    <?php the_field('icon_lable_and_bar_heading') ?>
+
+                    <?php  } else {
+                        the_title();
+                         } ?>
+                    <!-- Page Content (WYSIWYG Field) -->
                 </p>
             </div>
 
@@ -132,7 +147,13 @@
                 <img class="homescreen_icons_images" src="<?php echo get_stylesheet_directory_uri(); ?>/dist/system/icons/folder.png"
                     id="win_start_icon" alt="Portfolio">
                 <p class="homescreen_title_text">
-                    <?php the_title();?>
+                    <?php if ( get_field('icon_lable_and_bar_heading') ) { ?>
+
+                    <?php the_field('icon_lable_and_bar_heading') ?>
+
+                    <?php  } else {
+                        the_title();
+                         } ?>
                 </p>
             </div>
 
@@ -150,7 +171,13 @@
                 <img class="homescreen_icons_images" src="<?php echo get_stylesheet_directory_uri(); ?>/dist/system/icons/recycle_bin_full.png"
                     id="win_start_icon" alt="Archives">
                 <p class="homescreen_title_text">
-                    <?php the_title();?>
+                    <?php if ( get_field('icon_lable_and_bar_heading') ) { ?>
+
+                    <?php the_field('icon_lable_and_bar_heading') ?>
+
+                    <?php  } else {
+                        the_title();
+                         } ?>
                 </p>
             </div>
 
@@ -176,7 +203,13 @@
                 <img class="homescreen_icons_images" src="<?php echo get_stylesheet_directory_uri(); ?>/dist/system/icons/contact_icon.png"
                     id="win_start_icon" alt="Contact">
                 <p class="homescreen_title_text">
-                    <?php the_title();?>
+                    <?php if ( get_field('icon_lable_and_bar_heading') ) { ?>
+
+                    <?php the_field('icon_lable_and_bar_heading') ?>
+
+                    <?php  } else {
+                        the_title();
+                         } ?>
                 </p>
             </div>
 
@@ -187,7 +220,7 @@
 
             <!-- Resume -->
 
-                            <?php $file = get_field('resume_section');
+            <?php $file = get_field('resume_section');
                 if( $file ): ?>
 
             <div class='homescreen_icons'>
@@ -197,7 +230,7 @@
 
 
                 <a class="home_link" href="<?php echo $file['url']; ?>" download>
-        
+
                     <img class="homescreen_icons_images" src="<?php echo get_stylesheet_directory_uri(); ?>/dist/system/icons/resume.png"
                         id="win_start_icon" alt="Resume">
                 </a>
@@ -205,7 +238,7 @@
             </div>
 
 
-                <?php endif; ?>
+            <?php endif; ?>
 
         </div>
     </div>

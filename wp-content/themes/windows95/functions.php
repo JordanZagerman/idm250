@@ -15,7 +15,7 @@ if (version_compare($GLOBALS['wp_version'], '4.9.6', '<')) {
 function load_theme_assets()
 {
 
-    if (is_front_page()) {
+    if (is_front_page() || is_404() || is_page_template('404')) {
         wp_enqueue_style('front-page-normalize', get_template_directory_uri() . '/dist/system/normalize.css');
         wp_enqueue_style('front-page-style', get_template_directory_uri() . '/dist/system/style.css');
         wp_enqueue_style('front-page-controls', get_template_directory_uri() . '/dist/system/controls.css');

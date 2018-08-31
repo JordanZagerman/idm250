@@ -1,5 +1,8 @@
 <?php get_header('pages'); ?>
 
+        <div class="win_wid_NAME_tgt"></div>
+        <div id="win_wid_NAME_container" class="general">
+
 <?php if (have_posts()): ?>
 
           <article class="post">   
@@ -12,5 +15,9 @@
         <?php else: ?>
           <h2>Sorry, No Post Found</h2>
         <?php endif; ?>
+
+                </div>
+        <!-- end widget html -->
+    </div>
 
 <?php get_footer(); ?>

@@ -249,7 +249,7 @@ function windowsError(icon, title, msg) {
 	var sec1 = '<div class="win_wid_error_tgt"></div><div class="win_wid_error_container">';
 	var sec2 = '<div class="win_wid_error_concont"><div class="win_wid_error_icondiv"><img src="';
 	// icon img url
-	var sec3 = '" class="win_wid_error_icon"></div><p class="win_wid_error_text">';
+	var sec3 = '"class="win_wid_error_icon"></div><p class="win_wid_error_text">';
 	// message text
 	var sec4 = '</p></div><p class="win_wid_error_buttoncont">';
 	var sec5 = '<button class="win_wid_error_close" onclick="errorClose()">OK</button></p></div>';
@@ -264,9 +264,12 @@ function windowsErrorLoop() {
 }
 
 function errorClose() {
+	var themeUri = $('[data-theme-uri]').attr('data-theme-uri');
+
 	var win_id = $(".win_wid_error_tgt").parent().parent().attr('id');
 	// start refining the window_id retrieved above and execute windowClose()
 	var win_id_splt = win_id.split("_");
 	var win_num = win_id_splt[1];
 	windowClose(win_num);
+	window.location.replace('.');
 }
