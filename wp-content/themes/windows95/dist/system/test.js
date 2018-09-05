@@ -115,14 +115,4 @@ function run(start) { // the run box
 			$( '#win_wid_run_obutton' ).prop('disabled', true);
 		}
 	});
-	function runOK() {
-		var boxVal = $( "#win_wid_run_input" ).val();
-		aliasRun(boxVal); // sends the input to the alias => JS function
-	}
-	function runCancel() {
-		windowClose(win_num);
-	}
-	function runBrowse() {
-		// this is just a placeholder for if/when we can browse for "executables"
-	}
 }

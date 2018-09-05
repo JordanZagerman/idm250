@@ -1,8 +1,24 @@
 <?php get_header(); ?>
 
-<body onload="updateClock(); setInterval('updateClock()', 1000 );" <?php body_class();?> data-theme-uri="
-    <?php echo get_stylesheet_directory_uri(); ?>/dist/" data-pages-uri="
-    <?php echo get_stylesheet_directory_uri(); ?>/">
+<?php $post_object = get_field('search_page_section'); 
+// ^^ Gets reference to Search Page
+            if( $post_object ) {
+                // ^^ Checking to see if anything was selected
+                $post = $post_object;
+                // ^^ Assigning variable post, because that's how wordpress works
+                setup_postdata( $post ); 
+                // ^^ Look this up later
+    $searchUri = get_permalink();
+    wp_reset_postdata(); // IMPORTANT - reset the $post object so the rest of the page works correctly
+                } ?>
+
+
+
+
+<body onload="updateClock(); setInterval('updateClock()', 1000 );" <?php body_class();?>
+data-theme-uri="<?php echo get_stylesheet_directory_uri(); ?>/dist/" 
+data-search-uri="<?php echo $searchUri; ?>" 
+data-pages-uri="<?php echo get_stylesheet_directory_uri(); ?>/">
     <noscript>
         <div class="bsod_container">
             <div class="bsod_textcont">
@@ -44,50 +60,87 @@
         <div id="win_start_tli_cont">
             <!-- Programs -->
             <div id="win_start_tli_programs" class="win_start_toplevel_item">
-                <img src="<?php echo get_stylesheet_directory_uri(); ?>/dist/system/icons/programs24.png" alt="Programs"
-                    class="win_start_tliicon">
+                <!-- Image -->
+                <?php if (get_field('start_menu_block_1_image')) { ?>
+                <img src="<?php the_field('start_menu_block_1_image')?>" alt="#" class="win_start_tliicon sidebar_icon">
+                <?php  } else { ?>
+                <img src="<?php echo get_stylesheet_directory_uri(); ?>/dist/system/icons/programs24.png" alt="Programs" class="win_start_tliicon">
+                <?php }?>
+                <!-- Title -->
                 <?php if (get_field('start_menu_block_1_first_letter') && get_field('start_menu_block_1_following_letters')) { ?>
                 <span class="win_start_tlitext"><u><?php the_field('start_menu_block_1_first_letter')?></u><?php the_field('start_menu_block_1_following_letters')?></span>
                 <?php  } else { ?>
                 <span class="win_start_tlitext"><u>P</u>rograms</span>
                 <?php }?>
+
             </div>
             <!-- Documents -->
             <div id="win_start_tli_documents" class="win_start_toplevel_item">
-                <img src="<?php echo get_stylesheet_directory_uri(); ?>/dist/system/icons/documents24.png" alt="Documents"
-                    class="win_start_tliicon">
+                <!-- Image -->
+                <?php if (get_field('start_menu_block_2_image')) { ?>
+                <img src="<?php the_field('start_menu_block_2_image')?>" alt="#" class="win_start_tliicon sidebar_icon">
+                <?php  } else { ?>
+                <img src="<?php echo get_stylesheet_directory_uri(); ?>/dist/system/icons/documents24.png" alt="Documents" class="win_start_tliicon">
+                <?php }?>
+                <!-- Title -->
                 <?php if (get_field('start_menu_block_2_first_letter') && get_field('start_menu_block_2_following_letters')) { ?>
-                <span class="win_start_tlitext"><u>
-                        <?php the_field('start_menu_block_2_first_letter')?></u>
-                    <?php the_field('start_menu_block_2_following_letters')?></span>
+                <span class="win_start_tlitext"><u><?php the_field('start_menu_block_2_first_letter')?></u><?php the_field('start_menu_block_2_following_letters')?></span>
                 <?php  } else { ?>
                 <span class="win_start_tlitext"><u>D</u>ocuments</span>
                 <?php }?>
             </div>
             <!-- Settings -->
             <div id="win_start_tli_settings" class="win_start_toplevel_item">
-                <img src="<?php echo get_stylesheet_directory_uri(); ?>/dist/system/icons/settings24.png" alt="Settings"
-                    class="win_start_tliicon">
-                <span class="win_start_tlitext">
-                    <u>S</u>ettings</span>
+                <!-- Image -->
+                <?php if (get_field('start_menu_block_3_image')) { ?>
+                <img src="<?php the_field('start_menu_block_3_image')?>" alt="#" class="win_start_tliicon sidebar_icon">
+                <?php  } else { ?>                
+                <img src="<?php echo get_stylesheet_directory_uri(); ?>/dist/system/icons/settings24.png" alt="Settings" class="win_start_tliicon">
+                <?php }?>
+                <!-- Title -->
+                <?php if (get_field('start_menu_block_3_first_letter') && get_field('start_menu_block_3_following_letters')) { ?>
+                <span class="win_start_tlitext"><u><?php the_field('start_menu_block_3_first_letter')?></u><?php the_field('start_menu_block_3_following_letters')?></span>
+                <?php  } else { ?>
+                <span class="win_start_tlitext"><u>S</u>ettings</span>
+                <?php }?>
             </div>
             <!-- Find -->
             <div id="win_start_tli_find" class="win_start_toplevel_item" onClick="run(true)">
+
+
                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/dist/system/icons/find24.png" alt="Find" class="win_start_tliicon">
                 <span class="win_start_tlitext">
                     <u>F</u>ind</span>
             </div>
             <!-- Help -->
             <div id="win_start_tli_help" class="win_start_toplevel_item">
+                <!-- Image -->
+                <?php if (get_field('start_menu_block_4_image')) { ?>
+                <img src="<?php the_field('start_menu_block_4_image')?>" alt="#" class="win_start_tliicon sidebar_icon">
+                <?php  } else { ?>                
                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/dist/system/icons/help24.png" alt="Help" class="win_start_tliicon">
-                <span class="win_start_tlitext">
-                    <u>H</u>elp</span>
+                <?php }?>
+                <!-- Title -->
+                <?php if (get_field('start_menu_block_4_first_letter') && get_field('start_menu_block_4_following_letters')) { ?>
+                <span class="win_start_tlitext"><u><?php the_field('start_menu_block_4_first_letter')?></u><?php the_field('start_menu_block_4_following_letters')?></span>
+                <?php  } else { ?>
+                <span class="win_start_tlitext"><u>H</u>elp</span>
+                <?php }?>
             </div>
             <!-- Run -->
             <div id="win_start_tli_run" class="win_start_toplevel_item">
+                <!-- Image -->
+                <?php if (get_field('start_menu_block_5_image')) { ?>
+                <img src="<?php the_field('start_menu_block_5_image')?>" alt="#" class="win_start_tliicon sidebar_icon">
+                <?php  } else { ?>                     
                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/dist/system/icons/run24.png" alt="Run..." class="win_start_tliicon">
-                <span class="win_start_tlitext">
-                    <u>R</u>un...</span>
+                <?php }?>
+                <!-- Title -->
+                <?php if (get_field('start_menu_block_5_first_letter') && get_field('start_menu_block_5_following_letters')) { ?>
+                <span class="win_start_tlitext"><u><?php the_field('start_menu_block_5_first_letter')?></u><?php the_field('start_menu_block_5_following_letters')?></span>
+                <?php  } else { ?>
+                <span class="win_start_tlitext"><u>R</u>un...</span>
+                <?php }?>
             </div>
             <!-- Divider -->
             <div class="win_start_divider">

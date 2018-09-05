@@ -175,24 +175,28 @@ function run(start) { // the run box
 
 // we should eventually replace the hardcoded aliases here with a database-type system
 // loaded dynamically
-function aliasRun(rawCommand) {
-	var themeUri = $('[data-theme-uri]').attr('data-theme-uri');
 
-	var command = rawCommand.toLowerCase(); // for case insensitivity
-	if(command == "debug") {
-		var debugJsLink = $("<script src="+themeUri+"'system/debug/debug.js'>");
-		$("head").append(debugJsLink);
-		winDebug();
-	} else if (command == "winver") {
-		winverStart();
-	} else {
+// Duplicate command
 
-		// put file not found error dialog js here
-		makeWindow(themeUri + 'system/icons/find24.png', 'Find',themeUri + 'pages/search_results_page.html', true);
-	}
-}
+// function aliasRun(rawCommand) {
+// 	var themeUri = $('[data-theme-uri]').attr('data-theme-uri');
+
+// 	var command = rawCommand.toLowerCase(); // for case insensitivity
+// 	if(command == "debug") {
+// 		var debugJsLink = $("<script src="+themeUri+"'system/debug/debug.js'>");
+// 		$("head").append(debugJsLink);
+// 		winDebug();
+// 	} else if (command == "winver") {
+// 		winverStart();
+// 	} else {
+// 		console.log('linking to static search results page');
+// 		// put file not found error dialog js here
+// 		makeWindow(themeUri + 'system/icons/find24.png', 'Find',themeUri + 'pages/search_results_page.html', true);
+// 	}
+// }
 
 function runOK() {
+	console.log('Run OK Called');
 	var boxVal = $("#win_wid_run_input").val();
 	aliasRun(boxVal); // sends the input to the alias => JS function (run.js)
 	runClose();

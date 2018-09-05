@@ -6,6 +6,7 @@
 function aliasRun(rawCommand) {
 	var themeUri = $('[data-theme-uri]').attr('data-theme-uri');
 	var pagesUri = $('[data-pages-uri]').attr('data-pages-uri');
+	var searchUri = $('[data-search-uri]').attr('data-search-uri');
 
 	var command = rawCommand.toLowerCase(); // for case insensitivity
 	if(command == "debug") {
@@ -16,9 +17,17 @@ function aliasRun(rawCommand) {
 		winverStart();
 	} else {
 		console.log("else aliasRun");
-		console.log(pagesUri);
+		console.log("command: " + command);
+		console.log("rawCommand: " + rawCommand);
+		console.log("pageshUri: " + pagesUri);
+		console.log("searchUri: " + searchUri);
 
-		// put file not found error dialog js here
-		makeWindow(themeUri + 'system/icons/find24.png', 'Find', pagesUri + "pages/search_results_page.html", true);
+		// Grab Current URl idm250/
+		// Concatinate the keyword to that url
+		// force browser to redirect to that url
+		// redirect close() to the homepage
+		// get search results to look like homepage with a loop
+		
+		makeWindow(themeUri + 'system/icons/find24.png', 'Find', '?s=' + command, true);
 	}
 }

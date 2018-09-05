@@ -189,6 +189,18 @@
     padding-left: 5px;
 }
 
+/* Sidebar icons */
+
+.sidebar_icon {
+    width: 20px;
+    height: 20px;
+}
+
+.search {
+    background: white;
+    height: 100%;
+}
+
 @media only screen and (max-width: 600px) {
     .homescreen_icons_images {
         height: 36px;
