@@ -21,8 +21,7 @@ global $wp_query;
             <?php while ( have_posts() ) { the_post(); ?>
 
                <li>
-                 <h3><a href="<?php echo get_permalink(); ?>">
-                   <?php the_title();  ?>
+                 <h3><a href="<?php echo get_permalink(); ?>">Portfolio/<?php the_title(); ?>
                  </a></h3>
                  <?php  the_post_thumbnail('medium') ?>
                  <?php echo substr(get_the_excerpt(), 0,200); ?>

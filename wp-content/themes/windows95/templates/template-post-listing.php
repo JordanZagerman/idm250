@@ -37,7 +37,7 @@ get_header('pages');
         <header class="entry-header">
           <!-- <span class="date-article">
                     <i class="fa fa-calendar-o"></i><?php the_date();?></span> -->
-          <li class="window_unordered_list_item"><a href="<?php the_permalink(); ?>">Portfolio/<?php the_title(); ?></a></li>
+                    <li class="window_unordered_list_item"><a href="<?php the_permalink(); ?>">Portfolio/<?php the_title(); ?></a></li>
           <a href="<?php the_permalink(); ?>"></a>
       <?php endwhile; ?>
       <?php wp_reset_postdata(); ?>

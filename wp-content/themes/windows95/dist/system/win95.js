@@ -14,6 +14,9 @@ var window_set = 0; // must be set to zero for proper function of the window gen
 var debug = true; // debug variable, set to true for console output
 var titbHeight = 18; // titlebar height in pixels
 var defaultImage = "icons/default16.png"; // default taskbar and titlebar icon (16 x 16)
+var windowWidth = window.innerWidth;
+var isMobile = windowWidth < 600;
+console.log('windowWidth: ' + windowWidth);
 
 // AUTORUN FUNCTION (Classes and Start Menu)
 $(document).ready(function()
@@ -71,20 +74,47 @@ $(document).ready(function()
     });
   });
   // MAXIMIZE BUTTON
-  $("#win_container").on('mousedown', '.win_titb_max', function()
-  {
-    $(this).attr("src", $('[data-theme-uri]').attr('data-theme-uri') + themeUri + "system/win_controls/max_dep.png");
-    $(this).mouseup(function()
+  if (isMobile) {
+
+    // Make Window appear fullscreen on mobile when clicked
+
+    console.log('isMobile: ' + isMobile);
+
+    $("#win_container").on('mousedown', '.win_titb_max', function()
     {
-      $(this).attr("src", $('[data-theme-uri]').attr('data-theme-uri') + themeUri + "system/win_controls/max.png");
-      var windc_id = $(this).parent().attr("id");
-      var windc_id_splt = windc_id.split("_");
-      var win_id = windc_id_splt[2];
-      var window_id = "#window_" + win_id;
-      //alert( 'Window ID Number (mouseup function - 51) ' + win_id ); 
-      windowMax(win_id);
+      $(this).attr("src", $('[data-theme-uri]').attr('data-theme-uri') + themeUri + "system/win_controls/max_dep.png");
+      $(this).mouseup(function()
+      {
+        $(this).attr("src", $('[data-theme-uri]').attr('data-theme-uri') + themeUri + "system/win_controls/max.png");
+        var windc_id = $(this).parent().attr("id");
+        var windc_id_splt = windc_id.split("_");
+        var win_id = windc_id_splt[2];
+        var window_id = "#window_" + win_id;
+        //alert( 'Window ID Number (mouseup function - 51) ' + win_id ); 
+        windowMax(win_id);
+      });
     });
-  });
+
+  } else {
+
+    $("#win_container").on('mousedown', '.win_titb_max', function()
+    {
+      $(this).attr("src", $('[data-theme-uri]').attr('data-theme-uri') + themeUri + "system/win_controls/max_dep.png");
+      $(this).mouseup(function()
+      {
+        $(this).attr("src", $('[data-theme-uri]').attr('data-theme-uri') + themeUri + "system/win_controls/max.png");
+        var windc_id = $(this).parent().attr("id");
+        var windc_id_splt = windc_id.split("_");
+        var win_id = windc_id_splt[2];
+        var window_id = "#window_" + win_id;
+        //alert( 'Window ID Number (mouseup function - 51) ' + win_id ); 
+        windowMax(win_id);
+      });
+    });
+
+  }
+
+
   // CLOSE BUTTON
   $("#win_container").on('mousedown', '.win_titb_close', function()
   {
