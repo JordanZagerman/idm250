@@ -159,6 +159,12 @@ function run(start) { // the run box
 	// time to make the widgets...
 	makeWidget(false, 'Find', widgetHTML, false, false, false, false, 340, 140, 'win_wid_run_dialog');
 	$('#win_wid_run_input').focus();
+	$('#win_wid_run_input').keypress(function (e) {
+		console.log('Enter pressed in form');
+		if (e.which == 13) {
+		runOK();
+		}
+	});
 	// set "open" button active and inactive based on input value
 	$('#win_wid_run_input').on('input', function () {
 		var tbVal = $('#win_wid_run_input').val();
