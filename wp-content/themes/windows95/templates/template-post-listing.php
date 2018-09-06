@@ -17,7 +17,6 @@ $posts = new WP_Query($arg);
 get_header('pages');
 ?>
 
-
 <?php get_field('page_header'); ?>
 <h1 class="page_heading_1">
   <?php the_field('page_header'); ?>
