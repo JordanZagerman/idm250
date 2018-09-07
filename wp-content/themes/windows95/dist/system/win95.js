@@ -74,12 +74,8 @@ $(document).ready(function()
     });
   });
   // MAXIMIZE BUTTON
-  if (isMobile) {
-
     // Make Window appear fullscreen on mobile when clicked
-
-    console.log('isMobile: ' + isMobile);
-
+    
     $("#win_container").on('mousedown', '.win_titb_max', function()
     {
       $(this).attr("src", $('[data-theme-uri]').attr('data-theme-uri') + themeUri + "system/win_controls/max_dep.png");
@@ -94,26 +90,6 @@ $(document).ready(function()
         windowMax(win_id);
       });
     });
-
-  } else {
-
-    $("#win_container").on('mousedown', '.win_titb_max', function()
-    {
-      $(this).attr("src", $('[data-theme-uri]').attr('data-theme-uri') + themeUri + "system/win_controls/max_dep.png");
-      $(this).mouseup(function()
-      {
-        $(this).attr("src", $('[data-theme-uri]').attr('data-theme-uri') + themeUri + "system/win_controls/max.png");
-        var windc_id = $(this).parent().attr("id");
-        var windc_id_splt = windc_id.split("_");
-        var win_id = windc_id_splt[2];
-        var window_id = "#window_" + win_id;
-        //alert( 'Window ID Number (mouseup function - 51) ' + win_id ); 
-        windowMax(win_id);
-      });
-    });
-
-  }
-
 
   // CLOSE BUTTON
   $("#win_container").on('mousedown', '.win_titb_close', function()
@@ -484,7 +460,7 @@ function windowClose(num)
 // WINDOW MAXIMIZE FUNCTION
 function windowMax(num)
 {
-  if (debug == true)
+  if (debug == true || isMobile == true)
   {
     console.log("Maximize function enabled for Window " + num);
   }

@@ -8,10 +8,20 @@
 
 get_header(); ?>
 
+<?php 
+$link = get_field('portfolio_post_heading_link');
 
-<a href="projects/IDM240/index.html">
+if($link){ ?>
+
+<a href="<?php echo $link['url']; ?>">
     <h1 class="page_heading_1"><?php the_field('porfolio_post_heading'); ?></h1>
 </a>
+
+<?php }else{?>
+
+        <h1 class="page_heading_1"><?php the_field('porfolio_post_heading'); ?></h1>
+
+<?php } ?>
 <div id="widget_cont">
     <!-- start widget html -->
     <div class="win_wid_NAME_tgt"></div>
