@@ -93,10 +93,10 @@ $(document).ready(function()
   // CLOSE BUTTON
   $("#win_container").on('mousedown', '.win_titb_close', function()
   {
-    $(this).attr("src", $('[data-theme-uri]').attr('data-theme-uri') + themeUri + "system/win_controls/close_dep.png");
+    $(this).attr("src", themeUri + "system/win_controls/close_dep.png");
     $(this).mouseup(function()
     {
-      $(this).attr("src", $('[data-theme-uri]').attr('data-theme-uri') + themeUri + "system/win_controls/close.png");
+      $(this).attr("src", themeUri + "system/win_controls/close.png");
       var windc_id = $(this).parent().attr("id");
       //alert(windc_id);
       var windc_id_splt = windc_id.split("_");
