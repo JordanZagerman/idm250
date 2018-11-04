@@ -10,7 +10,6 @@ body, html {
 	left: 0px;
 	/*background-color: red; */
 	z-index: 800;
-	overflow: hidden;
 }
 #win_overlay {
 	position: absolute;
